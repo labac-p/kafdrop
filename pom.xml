@@ -161,6 +161,13 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+        <!-- AWS MSK IAM -->
+        <dependency>
+            <groupId>software.amazon.msk</groupId>
+            <artifactId>aws-msk-iam-auth</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -246,7 +253,7 @@
                 <configuration>
                     <images>
                         <image>
-                            <name>obsidiandynamics/kafdrop:${project.version}</name>
+                            <name>ghcr.io/labac-p/kafdrop:${project.version}</name>
                             <build>
                                 <assemblies>
                                     <assembly>
@@ -257,6 +264,9 @@
                                     <platforms>
                                         <platform>${docker.platforms}</platform>
                                     </platforms>
+                                    <attestations>
+                                        <provenance>false</provenance>
+                                    </attestations>
                                 </buildx>
                                 <contextDir>${project.build.directory}/docker-ready</contextDir>
                                 <noCache>true</noCache>
